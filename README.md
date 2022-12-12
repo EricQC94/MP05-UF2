@@ -98,13 +98,12 @@ public class pizzeriaPepe {
 <br>Classes d'equivalència:
 | Paràmetre entrada | Regla a aplicar | Classes vàlides | Classes no vàlides |
 | ----------- | ----------- | ----------- | ----------- |
-| Pizzes | Són més de 10? + rang valors (1..10) | 1. 1 <= pizzes <= 10 <br>2. pizzes == 0| 3. no és un número |
+| Pizzes | Són més de 10? + rang valors (1..10) | 1. 1 <= pizzes <= 10| 2. pizzes == 0 <br>3. no és un número |
 
 <br>Classes d'equivalència vàlides:
 | Pizzes | Classe vàlida coberta| Resultat |
 | ----------- | ----------- | ----------- |
 | 4 | 1 | TRUE |
-| 0 | 2 | FALSE |
 
 <br>Classes d'equivalència no vàlides:
 | Pizzes | Classe no vàlida coberta| Resultat |
