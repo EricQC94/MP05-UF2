@@ -26,8 +26,10 @@ public class pizzeriaPepe {
 
     }
 }
-
-
+```
+| Paràmetre entrada | Regla a aplicar | Classes vàlides | Classes no vàlides |
+| ----------- | ----------- | ----------- | ----------- |
+| Pizzes | Són més de 10? + rang valors (1..10) | 1. 1 <= pizzes <= 10 | 2. pizzes < 1 <br> 3. no és un número |
 ### Transports Jean Claude:
 
 Un programa gestiona si una càrrega es pot portar amb una furgoneta.
