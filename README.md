@@ -120,14 +120,14 @@ Proves d'anàlisi dels valors límit:
 Classes vàlides:
 | Pizzes | Classe vàlida coberta| Resultat |
 | ----------- | ----------- | ----------- |
-| 1 | 5 | Passa |
-| 10 | 6 | Passa |
+| 1 | 5 | TRUE |
+| 10 | 6 | TRUE |
 
 Classes no vàlides:
 | Pizzes | Classe no vàlida coberta| Resultat |
 | ----------- | ----------- | ----------- |
-| 0 | 5 | Passa |
-| 11 | 6 | Passa |
+| 0 | 5 | FALSE |
+| 11 | 6 | FALSE |
 
 ### Transports Jean Claude:
 
