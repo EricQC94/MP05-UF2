@@ -85,7 +85,7 @@ public class pizzeriaPepe {
         System.out.println("Introdueix un número de pizzes:");
         pizzes = ent.nextInt();
 
-        if (pizzes < 10) {
+         if (1 < pizzes && pizzes < 10) {
             System.out.println("TRUE");
         }
         else{
@@ -98,7 +98,7 @@ public class pizzeriaPepe {
 <br>Classes d'equivalència:
 | Paràmetre entrada | Regla a aplicar | Classes vàlides | Classes no vàlides |
 | ----------- | ----------- | ----------- | ----------- |
-| Pizzes | Són més de 10? + rang valors (1..10) | 1. 1 <= pizzes <= 10| 2. pizzes == 0 <br>3. no és un número |
+| Pizzes | És un número? + rang valors (1..10) | 1. 1 <= pizzes <= 10| 2. pizzes == 0 <br>3. no és un número |
 
 <br>Classes d'equivalència vàlides:
 | Pizzes | Classe vàlida coberta| Resultat |
@@ -111,22 +111,85 @@ public class pizzeriaPepe {
 | 0 | 2 | FALSE |
 | cinc | 3 | no és un número |
 
+Proves d'anàlisi dels valors límit:
+
+| Paràmetre entrada | Regla a aplicar | Classes vàlides | Classes no vàlides |
+| ----------- | ----------- | ----------- | ----------- |
+| Pizzes | És un número? + rang valors (1..10) | 4. pizzes=1 <br> 5. pizzes=10| 6. pizzes=0 <br> 7. pizzes=11|
+
+Classes vàlides:
+| Pizzes | Classe vàlida coberta| Resultat |
+| ----------- | ----------- | ----------- |
+| 1 | 5 | Passa |
+| 10 | 6 | Passa |
+
+Classes no vàlides:
+| Pizzes | Classe no vàlida coberta| Resultat |
+| ----------- | ----------- | ----------- |
+| 0 | 5 | Passa |
+| 11 | 6 | Passa |
 
 ### Transports Jean Claude:
 
-Un programa gestiona si una càrrega es pot portar amb una furgoneta.
+```
+import java.util.Scanner;
 
-Una càrrega sempre pesarà almenys 500 kg. per aprofitar el transport, però no podrà pesar més de 900kg.
+public class jeanClaude {
+    public static void main(String[] args) {
+        Scanner ent = new Scanner(System.in);
+        int carrega;
 
-Una furgoneta ha de tenir la capacitat de portar un pes mínima de 500kg i màxima de 750kg.
+        System.out.println("Introdueix un pes de càrrega:");
+        carrega = ent.nextInt();
 
-Si una càrrega no es pot portar el programa retorna -1, en cas contrari retorna 0.
+        if (carrega >= 500 && carrega < 750) {
+            System.out.println("0");
 
-Es demana:
+        }
+        else
+        System.out.println("-1");
+    }
+}
 
-- Fer el codi font del programa.
-- Fer la taula amb les particions equivalents i casos vàlids i no vàlids.
-- Fer la taula amb l'anàlisis de valors límit i casos vàlids i no vàlids.
+```
+<br>Classes d'equivalència:
+| Paràmetre entrada | Regla a aplicar | Classes vàlides | Classes no vàlides |
+| ----------- | ----------- | ----------- | ----------- |
+| Càrrega | És un número? + rang valors (500..750) | 1. 500 >= carrega <= 750| 2. carrega < 500 carrega > 750  <br>3. no és un número |
+
+
+<br>Classes d'equivalència vàlides:
+| Càrrega | Classe vàlida coberta| Resultat |
+| ----------- | ----------- | ----------- |
+| 550 | 1 | 0 |
+
+<br>Classes d'equivalència no vàlides:
+| Càrrega | Classe no vàlida coberta| Resultat |
+| ----------- | ----------- | ----------- |
+| 400 | 2 | -1 |
+| 850 | 2 | -1 |
+| cinquanta | 3 | no és un número |
+
+Proves d'anàlisi dels valors límit:
+
+| Paràmetre entrada | Regla a aplicar | Classes vàlides | Classes no vàlides |
+| ----------- | ----------- | ----------- | ----------- |
+| Càrrega | És un número? + rang valors (500..750) | 4. carrega=500 <br> 5. carrega=750 <br> 6. carrega=501 <br>7. carrega=749 | 6. carrega=499 <br> 7. carrega=751|
+
+Classes vàlides:
+| Carrega | Classe vàlida coberta| Resultat |
+| ----------- | ----------- | ----------- |
+| 500 | 4 | 0 |
+| 750 | 5 | 0 |
+| 501 | 6 | 0 |
+| 749 | 7 | 0 |
+
+Classes no vàlides:
+| Carrega | Classe vàlida coberta| Resultat |
+| ----------- | ----------- | ----------- |
+| 499 | 6 | -1 |
+| 751 | 7 | -1 |
+
 
 ### Control de temperatura:
 
