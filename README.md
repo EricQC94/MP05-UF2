@@ -213,6 +213,63 @@ Es demana:
 - Fer la taula amb les particions equivalents i casos vàlids i no vàlids.
 - Fer la taula amb l'anàlisis de valors límit i casos vàlids i no vàlids.
 
+```
+public class ControlTemp {
+    public static void main(String[] args) {
+        System.out.println(controlTemp(1,2));
+    }
+    public static int controlTemp (int medidor, int termostat){
+        int sortida = 0;
+        int aux = termostat-medidor;
+        if (medidor > termostat) {
+            sortida = 0;
+        }
+        else if(aux==0 || aux ==1 || aux == -1 || aux ==2 || aux ==-2){
+            sortida = 1;
+        }else{
+            sortida = 2;
+        }
+
+
+        return sortida;
+    }
+```
+
+
+
+<br>Classes d'equivalència:
+| Paràmetre entrada | Regla a aplicar | Classes vàlides | Classes no vàlides |
+| ----------- | ----------- | ----------- | ----------- |
+| Temperatura | És un número? + rang valors (-10..50) | 1. -10 , x <= controlTemp <= y , 50| <br>2. no és un número |
+
+<br>Classes d'equivalència vàlides:
+| Temperatura | Classe vàlida coberta| Resultat |
+| ----------- | ----------- | ----------- |
+| -10, 2 | 1 | 2 |
+
+<br>Classes d'equivalència no vàlides:
+| Temperatura | Classe no vàlida coberta| Resultat |
+| ----------- | ----------- | ----------- |
+| cinc | 2 | no és un número |
+
+Proves d'anàlisi dels valors límit:
+
+| Paràmetre entrada | Regla a aplicar | Classes vàlides | Classes no vàlides |
+| ----------- | ----------- | ----------- | ----------- |
+| Temperatura | És un número? + rang valors (-10, x..y , 50) | 4. controlTemp=-10, 50 <br> 5. =| 6. controlTemp=0 <br> 7. controlTemp=11|
+
+Classes vàlides:
+| Pizzes | Classe vàlida coberta| Resultat |
+| ----------- | ----------- | ----------- |
+| 1 | 5 | TRUE |
+| 10 | 6 | TRUE |
+
+Classes no vàlides:
+| Pizzes | Classe no vàlida coberta| Resultat |
+| ----------- | ----------- | ----------- |
+| 0 | 5 | FALSE |
+| 11 | 6 | FALSE |
+
 
 ## Activitats debug:
 
