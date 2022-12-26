@@ -256,19 +256,19 @@ Proves d'anàlisi dels valors límit:
 
 | Paràmetre entrada | Regla a aplicar | Classes vàlides | Classes no vàlides |
 | ----------- | ----------- | ----------- | ----------- |
-| Temperatura | És un número? + rang valors (-10, x..y , 50) | 4. controlTemp=-10, 50 <br> 5. =| 6. controlTemp=0 <br> 7. controlTemp=11|
+| Temperatura | És un número? + rang valors (-10, x..y , 50) | 4. controlTemp=-10, 50 <br> 5. controlTemp= -9, 49| 6. controlTemp=-11, 51 <br> 7. controlTemp=-0, 0|
 
 Classes vàlides:
-| Pizzes | Classe vàlida coberta| Resultat |
+| Temperatura | Classe vàlida coberta| Resultat |
 | ----------- | ----------- | ----------- |
-| 1 | 5 | TRUE |
-| 10 | 6 | TRUE |
+| -10, 50 | 4 | 2 |
+| -9, 49  | 5 | 2 |
 
 Classes no vàlides:
-| Pizzes | Classe no vàlida coberta| Resultat |
+| Temperatura | Classe no vàlida coberta| Resultat |
 | ----------- | ----------- | ----------- |
-| 0 | 5 | FALSE |
-| 11 | 6 | FALSE |
+| -11, 51 | 6 | 2 |
+| -0, 0 | 7 | 1 | 
 
 
 ## Activitats debug:
@@ -289,6 +289,32 @@ Es demana:
 
 - Codi del programa.
 - Captura de pantalla amb un punt d'interrupció que deixi veure totes les crides a la funció (agafeu un valor menor a 10).
+
+```
+import java.util.Scanner;
+
+public class factorDecomp {
+    public static void main(String args[]) {
+        int numero;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Introdueix un numero: ");
+        numero = sc.nextInt();
+
+        for (int i = 2; i < numero; i++) {
+            while (numero % i == 0) {
+                System.out.println(i + " ");
+                numero = numero / i;
+            }
+        }
+        if (numero > 2) {
+            System.out.println(numero);
+        }
+    }
+}
+```
+Captura:
+
+![Selecció_200](https://user-images.githubusercontent.com/113598440/209587750-dd7d45f7-3240-4841-ba21-4e6e5f2c606f.png)
 
 ### Taula de multiplicar:
 
