@@ -351,3 +351,177 @@ public class taulaMult {
 
 - Captura de com feu un punt d'interrupció al bucle de creació de la matriu i mostreu els valors de la matriu.
 - Captura de punt d'interrupció al bucle de multiplicació i com modifiqueu a ma els valors de la matriu de números per a que l'execució retorni el número 1 10 vegades quan l'argument d'entrada era 1.
+
+
+## Activitats proves unitaries
+#Pizzeria Pepe
+
+Codi del programa:
+
+```
+import java.util.Scanner;
+
+public class pizzeriaPepe {
+    public static void main(String[] args) {
+        Scanner ent = new Scanner(System.in);
+        int pizzes;
+
+
+
+        System.out.println("Introdueix un número de pizzes:");
+        pizzes = ent.nextInt();
+
+
+        if (1 < pizzes && pizzes < 10) {
+            System.out.println("TRUE");
+        }
+
+        else{
+            System.out.println("FALSE");
+
+        }
+
+
+    }
+
+    public static boolean pizzes(int i) {
+        return false;
+    }
+
+}
+```
+
+Codi programa test:
+
+```
+import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+
+
+class provesPizzeria {
+
+
+    @Test
+        //Valor entre els límits
+    void prova1() {
+        boolean pot = pizzeriaPepe.pizzes(3);
+        Assertions.assertTrue(pot);
+    }
+
+    @Test
+        //Valor superior al límit superior
+    void prova2() {
+        boolean pot = pizzeriaPepe.pizzes(11);
+        Assertions.assertFalse(pot);
+    }
+
+
+    @Test
+        //Valor inferior al límit inferior
+    void prova3() {
+        boolean pot = pizzeriaPepe.pizzes(-2);
+        Assertions.assertFalse(pot);
+    }
+
+
+    @Test
+//Valor no és un número
+    void prova4() {
+        Exception exception = Assertions.assertThrows(NumberFormatException.class, () -> {
+            pizzeriaPepe.pizzes(Integer.parseInt("cinc"));
+        });
+    }
+}
+```
+
+#Jean Claude
+
+Codi del programa:
+```
+import java.util.Scanner;
+
+public class jeanClaude {
+    public static void main(String[] args) {
+        Scanner ent = new Scanner(System.in);
+        int carrega;
+
+        System.out.println("Introdueix un pes de càrrega:");
+        carrega = ent.nextInt();
+
+        if (carrega >= 500 && carrega < 750) {
+            System.out.println("0");
+
+        }
+        else
+        System.out.println("-1");
+    }
+
+    public static boolean carrega(int i) {
+        return false;
+    }
+}
+```
+
+Codi programa test:
+```
+import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+
+
+class provesJean {
+
+
+    @Test
+        //Valor entre els límits
+    void prova1() {
+        boolean pot = jeanClaude.carrega(500);
+        Assertions.assertTrue(pot);
+    }
+
+    @Test
+        //Valor entre els límits
+    void prova2() {
+        boolean pot = jeanClaude.carrega(750);
+        Assertions.assertTrue(pot);
+    }
+
+    @Test
+        //Valor entre els límits
+    void prova3() {
+        boolean pot = jeanClaude.carrega(501);
+        Assertions.assertTrue(pot);
+    }
+
+    @Test
+        //Valor entre els límits
+    void prova4() {
+        boolean pot = jeanClaude.carrega(749);
+        Assertions.assertTrue(pot);
+    }
+
+    @Test
+        //Valor superior al límit superior
+    void prova5() {
+        boolean pot = jeanClaude.carrega(751);
+        Assertions.assertFalse(pot);
+    }
+
+
+    @Test
+        //Valor inferior al límit inferior
+    void prova6() {
+        boolean pot = jeanClaude.carrega(499);
+        Assertions.assertFalse(pot);
+    }
+
+
+    @Test
+//Valor no és un número
+    void prova7() {
+        Exception exception = Assertions.assertThrows(NumberFormatException.class, () -> {
+            jeanClaude.carrega(Integer.parseInt("cinc"));
+        });
+    }
+}
+```
+
