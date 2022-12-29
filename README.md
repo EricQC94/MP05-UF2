@@ -354,7 +354,7 @@ public class taulaMult {
 
 
 ## Activitats proves unitaries
-#Pizzeria Pepe
+# Pizzeria Pepe
 
 Codi del programa:
 
@@ -434,7 +434,7 @@ class provesPizzeria {
 }
 ```
 
-#Jean Claude
+# Jean Claude
 
 Codi del programa:
 ```
@@ -524,4 +524,84 @@ class provesJean {
     }
 }
 ```
+# Control temperatura:
 
+Codi del programa:
+```
+
+public class ControlTemp {
+    public static void main(String[] args) {
+        System.out.println(controlTemp(-0,0));
+    }
+    public static int controlTemp (int medidor, int termostat){
+        int sortida = 0;
+        int aux = termostat-medidor;
+        if (medidor > termostat) {
+            sortida = 0;
+        }
+        else if(aux==0 || aux ==1 || aux == -1 || aux ==2 || aux ==-2){
+            sortida = 1;
+        }else{
+            sortida = 2;
+        }
+
+
+        return sortida;
+    }
+
+    public static boolean medidor(int i) {
+        return false;
+    }
+
+    public static boolean termostat(int i) {
+        return false;
+    }
+}
+```
+
+Codi programa test:
+```
+import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+
+
+class provesTemp {
+
+
+    @Test
+        //Valor entre els límits
+    void prova1() {
+        boolean medidor = ControlTemp.medidor(-10);
+        boolean termostat = ControlTemp.termostat(50);
+        Assertions.assertTrue(medidor);
+        Assertions.assertTrue(termostat);
+    }
+
+    @Test
+        //Valor entre els límits
+    void prova2() {
+        boolean medidor = ControlTemp.medidor(-9);
+        boolean termostat = ControlTemp.termostat(49);
+        Assertions.assertTrue(medidor);
+        Assertions.assertTrue(termostat);
+    }
+
+    @Test
+        //Valor superior al límit superior
+    void prova3() {
+        boolean medidor = ControlTemp.medidor(-11);
+        boolean termostat = ControlTemp.termostat(51);
+        Assertions.assertFalse(medidor);
+        Assertions.assertFalse(termostat);
+    }
+
+
+    @Test
+//Valor no és un número
+    void prova4() {
+        Exception exception = Assertions.assertThrows(NumberFormatException.class, () -> {
+            ControlTemp.medidor(Integer.parseInt("cinc"));
+        });
+    }
+}
+```
