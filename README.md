@@ -324,6 +324,30 @@ Aquest programa rep per argument d'entrada un número sencer i retorna per termi
 Es demana:
 
 - Codi del programa.
+```
+import java.util.Scanner;
+
+public class taulaMult {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Introdueix un enter: ");
+        int num = scanner.nextInt();
+
+        int[] multiples = new int[10];
+        for (int i = 0; i < multiples.length; i++) {
+            multiples[i] = (i + 1) * num;
+        }
+
+        System.out.println("La taula de multiplicació del " + num + " és:");
+        for (int i = 0; i < multiples.length; i++) {
+            System.out.println((i + 1) + " * " + num + " = " + multiples[i]);
+        }
+    }
+}
+```
+
 - Captura de pantalla de com li passeu a IntelliJ com argument del programa un número. (Mireu exemple findAverage).
+![Selecció_201](https://user-images.githubusercontent.com/113598440/209889413-6f62504f-7905-41f1-8b11-5b382dd1407d.png)
+
 - Captura de com feu un punt d'interrupció al bucle de creació de la matriu i mostreu els valors de la matriu.
 - Captura de punt d'interrupció al bucle de multiplicació i com modifiqueu a ma els valors de la matriu de números per a que l'execució retorni el número 1 10 vegades quan l'argument d'entrada era 1.
