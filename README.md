@@ -111,13 +111,13 @@ Proves d'anàlisi dels valors límit:
 | ----------- | ----------- | ----------- | ----------- |
 | Pizzes | És un número? + rang valors (1..10) | 5. pizzes=1 <br> 6. pizzes=10| 7. pizzes=0 <br> 8. pizzes=11 |
 
-Classes vàlides:
+Valors límit vàlids:
 | Pizzes | Classe vàlida coberta| Resultat |
 | ----------- | ----------- | ----------- |
 | 1 | 5 | TRUE |
 | 10 | 6 | TRUE |
 
-Classes no vàlides:
+Valor límit no vàlids:
 | Pizzes | Classe no vàlida coberta| Resultat |
 | ----------- | ----------- | ----------- |
 | 0 | 7 | FALSE |
@@ -168,14 +168,14 @@ Proves d'anàlisi dels valors límit:
 | Capacitat | És un número? + rang de valors (500..750) | 11. capacitat= 500 12.capacitat = 750| 13. capacitat = 499 <br> 14. capacitat = 751 |
 
 
-Classes vàlides:
+Valor límit vàlids:
 | Carrega | Classe vàlida coberta| Resultat |
 | ----------- | ----------- | ----------- |
 | 500 | 7 | 0 |
 | 900 | 8 | 0 |
 | 500 i 750 | 11 i 12 | 0 |
 
-Classes no vàlides:
+Valor límit no vàlids:
 | Carrega | Classe vàlida coberta| Resultat |
 | ----------- | ----------- | ----------- |
 | 499 | 9 i 13 | -1 |
@@ -208,24 +208,22 @@ Es demana:
 
 ```
 public class ControlTemp {
-    public static void main(String[] args) {
-        System.out.println(controlTemp(1,2));
-    }
-    public static int controlTemp (int medidor, int termostat){
+
+    public static int calcularTemp(int medidor, int termostat) {
         int sortida = 0;
-        int aux = termostat-medidor;
+        int aux = termostat - medidor;
         if (medidor > termostat) {
             sortida = 0;
-        }
-        else if(aux==0 || aux ==1 || aux == -1 || aux ==2 || aux ==-2){
+        } else if (aux == 0 || aux == 1 || aux == -1 || aux == 2 || aux == -2) {
             sortida = 1;
-        }else{
+        } else {
             sortida = 2;
         }
 
 
         return sortida;
     }
+}
 ```
 
 
@@ -233,12 +231,12 @@ public class ControlTemp {
 <br>Classes d'equivalència:
 | Paràmetre entrada | Regla a aplicar | Classes vàlides | Classes no vàlides |
 | ----------- | ----------- | ----------- | ----------- |
-| Temperatura | És un número? + rang valors (-10..50) | 1. -10 , x <= controlTemp <= y , 50| <br>2. no és un número |
+| Temperatura | És un número? + rang valors (-10..50) | 1. -10 , x <= calcularTemp<= y , 50| <br>2. no és un número |
 
 <br>Classes d'equivalència vàlides:
 | Temperatura | Classe vàlida coberta| Resultat |
 | ----------- | ----------- | ----------- |
-| -10, 2 | 1 | 2 |
+| -10, -8 | 1 | 1 |
 
 <br>Classes d'equivalència no vàlides:
 | Temperatura | Classe no vàlida coberta| Resultat |
@@ -251,17 +249,17 @@ Proves d'anàlisi dels valors límit:
 | ----------- | ----------- | ----------- | ----------- |
 | Temperatura | És un número? + rang valors (-10, x..y , 50) | 4. controlTemp=-10, 50 <br> 5. controlTemp= -9, 49| 6. controlTemp=-11, 51 <br> 7. controlTemp=-0, 0|
 
-Classes vàlides:
+Valors límit vàlids:
 | Temperatura | Classe vàlida coberta| Resultat |
 | ----------- | ----------- | ----------- |
 | -10, 50 | 4 | 2 |
 | -9, 49  | 5 | 2 |
 
-Classes no vàlides:
+Valors límit no vàlids:
 | Temperatura | Classe no vàlida coberta| Resultat |
 | ----------- | ----------- | ----------- |
 | -11, 51 | 6 | 2 |
-| -0, 0 | 7 | 1 | 
+| 0, 0 | 7 | 1 | 
 
 
 ## Activitats debug:
@@ -518,80 +516,70 @@ class provesJean
 
 Codi del programa:
 ```
-
 public class ControlTemp {
-    public static void main(String[] args) {
-        System.out.println(controlTemp(-0,0));
-    }
-    public static int controlTemp (int medidor, int termostat){
+
+    public static int calcularTemp(int medidor, int termostat) {
         int sortida = 0;
-        int aux = termostat-medidor;
+        int aux = termostat - medidor;
         if (medidor > termostat) {
             sortida = 0;
-        }
-        else if(aux==0 || aux ==1 || aux == -1 || aux ==2 || aux ==-2){
+        } else if (aux == 0 || aux == 1 || aux == -1 || aux == 2 || aux == -2) {
             sortida = 1;
-        }else{
+        } else {
             sortida = 2;
         }
 
 
         return sortida;
     }
-
-    public static boolean medidor(int i) {
-        return false;
-    }
-
-    public static boolean termostat(int i) {
-        return false;
-    }
 }
+
 ```
 
 Codi programa test:
 ```
-import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class provesTemp {
+class provesTemp
+{
 
-
-    @Test
-        //Valor entre els límits
+    @org.junit.jupiter.api.Test
     void prova1() {
-        boolean medidor = ControlTemp.medidor(-10);
-        boolean termostat = ControlTemp.termostat(50);
-        Assertions.assertTrue(medidor);
-        Assertions.assertTrue(termostat);
+        // Classes d'equivalència vàlides - temperatura del medidor més baixa que la del termostat en diferencia de 2 graus (s'espera 1)
+        assertEquals(1, ControlTemp.calcularTemp(-10, -8));
     }
 
-    @Test
-        //Valor entre els límits
+
+    @org.junit.jupiter.api.Test
     void prova2() {
-        boolean medidor = ControlTemp.medidor(-9);
-        boolean termostat = ControlTemp.termostat(49);
-        Assertions.assertTrue(medidor);
-        Assertions.assertTrue(termostat);
+        // Valor límit vàlids
+        assertEquals(2,ControlTemp.calcularTemp(-10, 50));
+        assertEquals(2,ControlTemp.calcularTemp(-9, 49));
     }
 
-    @Test
-        //Valor superior al límit superior
+    @org.junit.jupiter.api.Test
     void prova3() {
-        boolean medidor = ControlTemp.medidor(-11);
-        boolean termostat = ControlTemp.termostat(51);
-        Assertions.assertFalse(medidor);
-        Assertions.assertFalse(termostat);
+        // Valor límit no vàlids
+        assertEquals(2,ControlTemp.calcularTemp(-11, 51));
+        assertEquals(1,ControlTemp.calcularTemp(0, 0));
     }
 
 
-    @Test
-//Valor no és un número
+    // ALTRES PROVES
+    @org.junit.jupiter.api.Test
     void prova4() {
-        Exception exception = Assertions.assertThrows(NumberFormatException.class, () -> {
-            ControlTemp.medidor(Integer.parseInt("cinc"));
-        });
+        // Medidor > termostat
+        assertEquals(0,ControlTemp.calcularTemp(30, 25));
     }
+    @Test
+    void prova5() {
+        // Fem fallar el programa
+        assertEquals(2,ControlTemp.calcularTemp(26, 25));
+
+    }
+
+
 }
 ```
