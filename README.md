@@ -74,31 +74,24 @@ Els mètodes de caixa blanca validen l'estructura interna del codi software, men
 
 Codi font:
 ```
-import java.util.Scanner;
-
 public class pizzeriaPepe {
     public static void main(String[] args) {
-        Scanner ent = new Scanner(System.in);
-        int pizzes;
-
-
-        System.out.println("Introdueix un número de pizzes:");
-        pizzes = ent.nextInt();
-
-         if (1 < pizzes && pizzes < 10) {
-            System.out.println("TRUE");
-        }
-        else{
-            System.out.println("FALSE");
-        }
-
+        System.out.println(potCarregar(5));
     }
+    public static boolean potCarregar(int pizzes){
+        boolean pot = false;
+        if(pizzes <=10 && pizzes >= 1){
+            pot = true;
+        }
+        return pot;
+    }
+
 }
 ```
 <br>Classes d'equivalència:
 | Paràmetre entrada | Regla a aplicar | Classes vàlides | Classes no vàlides |
 | ----------- | ----------- | ----------- | ----------- |
-| Pizzes | És un número? + rang valors (1..10) | 1. 1 <= pizzes <= 10| 2. pizzes == 0 <br>3. no és un número |
+| Pizzes | És un número? + rang valors (1..10) | 1. pizzes >= 1 pizzes <= 10| 2. pizzes > 10 <br> 3. pizzes < 1 <br> 5. no és un número |
 
 <br>Classes d'equivalència vàlides:
 | Pizzes | Classe vàlida coberta| Resultat |
@@ -108,14 +101,15 @@ public class pizzeriaPepe {
 <br>Classes d'equivalència no vàlides:
 | Pizzes | Classe no vàlida coberta| Resultat |
 | ----------- | ----------- | ----------- |
-| 0 | 2 | FALSE |
-| cinc | 3 | no és un número |
+| 13 | 2 | FALSE |
+| 0 | 3 | FALSE |
+| cinc | 4 | no és un número |
 
 Proves d'anàlisi dels valors límit:
 
 | Paràmetre entrada | Regla a aplicar | Classes vàlides | Classes no vàlides |
 | ----------- | ----------- | ----------- | ----------- |
-| Pizzes | És un número? + rang valors (1..10) | 4. pizzes=1 <br> 5. pizzes=10| 6. pizzes=0 <br> 7. pizzes=11|
+| Pizzes | És un número? + rang valors (1..10) | 5. pizzes=1 <br> 6. pizzes=10| 7. pizzes=0 <br> 8. pizzes=11 |
 
 Classes vàlides:
 | Pizzes | Classe vàlida coberta| Resultat |
@@ -126,69 +120,68 @@ Classes vàlides:
 Classes no vàlides:
 | Pizzes | Classe no vàlida coberta| Resultat |
 | ----------- | ----------- | ----------- |
-| 0 | 5 | FALSE |
-| 11 | 6 | FALSE |
+| 0 | 7 | FALSE |
+| 11 | 8 | FALSE |
 
 ### Transports Jean Claude:
 
 ```
-import java.util.Scanner;
-
-public class jeanClaude {
+public class jeanClaude
+{
     public static void main(String[] args) {
-        Scanner ent = new Scanner(System.in);
-        int carrega;
+        System.out.println(potCarregar(600, 900)); //Introduir dades
+    }
+    public static int potCarregar(int carrega, int capacitat)
+    {
+        int resultat;
+        if (carrega >= 500 && carrega <= 900 && capacitat>= 500 && capacitat <= 750 && carrega<=capacitat) resultat = 0;
+        else resultat = -1;
 
-        System.out.println("Introdueix un pes de càrrega:");
-        carrega = ent.nextInt();
-
-        if (carrega >= 500 && carrega < 750) {
-            System.out.println("0");
-
-        }
-        else
-        System.out.println("-1");
+        return resultat;
     }
 }
+
 
 ```
 <br>Classes d'equivalència:
 | Paràmetre entrada | Regla a aplicar | Classes vàlides | Classes no vàlides |
 | ----------- | ----------- | ----------- | ----------- |
-| Càrrega | És un número? + rang valors (500..750) | 1. 500 >= carrega <= 750| 2. carrega < 500 carrega > 750  <br>3. no és un número |
-
+| Càrrega | És un número? + rang valors (500..900) | 1. carrega >= 500 carrega <= 900| 2. carrega < 500 carrega > 900  <br>3. no és un número |
+| Capacitat | És un número? + rang de valors (500..750) | 4. capacitat >= 500 capacitat <= 750| 5. capacitat < 500 capacitat > 750 <br> 6. no és un número|
 
 <br>Classes d'equivalència vàlides:
 | Càrrega | Classe vàlida coberta| Resultat |
 | ----------- | ----------- | ----------- |
-| 550 | 1 | 0 |
+| 550 , 550 | 1 i 4 | 0 |
 
 <br>Classes d'equivalència no vàlides:
 | Càrrega | Classe no vàlida coberta| Resultat |
 | ----------- | ----------- | ----------- |
-| 400 | 2 | -1 |
-| 850 | 2 | -1 |
-| cinquanta | 3 | no és un número |
+| 400 , 900| 2 i 5| -1 |
+| cinquanta | 3 i 6| no és un número |
 
 Proves d'anàlisi dels valors límit:
 
 | Paràmetre entrada | Regla a aplicar | Classes vàlides | Classes no vàlides |
 | ----------- | ----------- | ----------- | ----------- |
-| Càrrega | És un número? + rang valors (500..750) | 4. carrega=500 <br> 5. carrega=750 <br> 6. carrega=501 <br>7. carrega=749 | 6. carrega=499 <br> 7. carrega=751|
+| Càrrega | És un número? + rang valors (500..900) | 7. carrega=500 <br> 8. carrega=900 | 9. carrega=499 <br> 10. carrega=901|
+| Capacitat | És un número? + rang de valors (500..750) | 11. capacitat= 500 12.capacitat = 750| 13. capacitat = 499 <br> 14. capacitat = 751 |
+
 
 Classes vàlides:
 | Carrega | Classe vàlida coberta| Resultat |
 | ----------- | ----------- | ----------- |
-| 500 | 4 | 0 |
-| 750 | 5 | 0 |
-| 501 | 6 | 0 |
-| 749 | 7 | 0 |
+| 500 | 7 | 0 |
+| 900 | 8 | 0 |
+| 500 i 750 | 11 i 12 | 0 |
 
 Classes no vàlides:
 | Carrega | Classe vàlida coberta| Resultat |
 | ----------- | ----------- | ----------- |
-| 499 | 6 | -1 |
-| 751 | 7 | -1 |
+| 499 | 9 i 13 | -1 |
+| 901 | 10 | -1 |
+| 751 | 14 | -1 |
+
 
 
 ### Control de temperatura:
@@ -359,43 +352,22 @@ public class taulaMult {
 Codi del programa:
 
 ```
-import java.util.Scanner;
-
 public class pizzeriaPepe {
-    public static void main(String[] args) {
-        Scanner ent = new Scanner(System.in);
-        int pizzes;
-
-
-
-        System.out.println("Introdueix un número de pizzes:");
-        pizzes = ent.nextInt();
-
-
-        if (1 < pizzes && pizzes < 10) {
-            System.out.println("TRUE");
+    public static boolean potCarregar(int pizzes){
+        boolean pot = false;
+        if(pizzes <=10 && pizzes >= 1){
+            pot = true;
         }
-
-        else{
-            System.out.println("FALSE");
-
-        }
-
-
+        return pot;
     }
 
-    public static boolean pizzes(int i) {
-        return false;
-    }
 
-}
 ```
 
 Codi programa test:
 
 ```
-import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.*;
 
 
 class provesPizzeria {
@@ -404,14 +376,14 @@ class provesPizzeria {
     @Test
         //Valor entre els límits
     void prova1() {
-        boolean pot = pizzeriaPepe.pizzes(3);
+        boolean pot = pizzeriaPepe.potCarregar(4);
         Assertions.assertTrue(pot);
     }
 
     @Test
         //Valor superior al límit superior
     void prova2() {
-        boolean pot = pizzeriaPepe.pizzes(11);
+        boolean pot = pizzeriaPepe.potCarregar(13);
         Assertions.assertFalse(pot);
     }
 
@@ -419,18 +391,47 @@ class provesPizzeria {
     @Test
         //Valor inferior al límit inferior
     void prova3() {
-        boolean pot = pizzeriaPepe.pizzes(-2);
+        boolean pot = pizzeriaPepe.potCarregar(0);
         Assertions.assertFalse(pot);
     }
 
 
     @Test
-//Valor no és un número
+        //Valor no és un número
     void prova4() {
-        Exception exception = Assertions.assertThrows(NumberFormatException.class, () -> {
-            pizzeriaPepe.pizzes(Integer.parseInt("cinc"));
-        });
+        boolean pot = pizzeriaPepe.potCarregar(Integer.parseInt("cinc"));
+        Assertions.assertFalse(pot);
     }
+
+    @Test
+        //Valors limits
+    void prova5() {
+        boolean pot = pizzeriaPepe.potCarregar(1);
+        Assertions.assertTrue(pot);
+    }
+
+    @Test
+        //Valors limit
+    void prova6() {
+        boolean pot = pizzeriaPepe.potCarregar(10);
+        Assertions.assertTrue(pot);
+    }
+
+    @Test
+        //Valor entre els límits
+    void prova7() {
+        boolean pot = pizzeriaPepe.potCarregar(0);
+        Assertions.assertFalse(pot);
+    }
+
+    @Test
+        //Valor superior al límit superior
+    void prova8() {
+        boolean pot = pizzeriaPepe.potCarregar(11);
+        Assertions.assertFalse(pot);
+    }
+
+
 }
 ```
 
@@ -438,90 +439,79 @@ class provesPizzeria {
 
 Codi del programa:
 ```
-import java.util.Scanner;
-
 public class jeanClaude {
     public static void main(String[] args) {
-        Scanner ent = new Scanner(System.in);
-        int carrega;
-
-        System.out.println("Introdueix un pes de càrrega:");
-        carrega = ent.nextInt();
-
-        if (carrega >= 500 && carrega < 750) {
-            System.out.println("0");
-
+        System.out.println(carrega(600));
+        System.out.println(capacitat(100));
+    }
+    public static boolean carrega(int carregaTotal) {
+        boolean carrega = false;
+        if(carregaTotal >= 500 && carregaTotal <=900){
+            carrega = true;
         }
-        else
-        System.out.println("-1");
+        return carrega;
+
+    }
+    public static boolean capacitat(int capacitatTotal){
+        boolean capacitat = false;
+        if(capacitatTotal >= 500 && capacitatTotal <= 700){
+            capacitat = true;
+        }
+        return capacitat;
     }
 
-    public static boolean carrega(int i) {
-        return false;
-    }
 }
 ```
 
 Codi programa test:
 ```
-import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
-
-class provesJean {
-
-
+class provesJean
+{
+    //Classes d'equivalència vàlides
     @Test
-        //Valor entre els límits
     void prova1() {
-        boolean pot = jeanClaude.carrega(500);
-        Assertions.assertTrue(pot);
-    }
+        Assertions.assertEquals(0, jeanClaude.potCarregar(550, 550)); //Correcte
 
+    }
+    //Classes d'equivalència no vàlides
     @Test
-        //Valor entre els límits
     void prova2() {
-        boolean pot = jeanClaude.carrega(750);
-        Assertions.assertTrue(pot);
+
+        Assertions.assertEquals(0, jeanClaude.potCarregar(400, 900)); //No es pot portar la carrega, expected hauria de ser -1
+
     }
 
+    //Valors límit - classes vàlides
     @Test
-        //Valor entre els límits
     void prova3() {
-        boolean pot = jeanClaude.carrega(501);
-        Assertions.assertTrue(pot);
+
+        Assertions.assertEquals(0, jeanClaude.potCarregar(500, 750));
     }
 
     @Test
-        //Valor entre els límits
     void prova4() {
-        boolean pot = jeanClaude.carrega(749);
-        Assertions.assertTrue(pot);
+
+        Assertions.assertEquals(0, jeanClaude.potCarregar(900, 750));
     }
 
+
+    //Valors límit - classes no vàlides
+
     @Test
-        //Valor superior al límit superior
     void prova5() {
-        boolean pot = jeanClaude.carrega(751);
-        Assertions.assertFalse(pot);
+
+        Assertions.assertEquals(-1, jeanClaude.potCarregar(499, 901)); //Els dos valors no es poden carregar, retorna -1: correcte.
     }
 
-
     @Test
-        //Valor inferior al límit inferior
     void prova6() {
-        boolean pot = jeanClaude.carrega(499);
-        Assertions.assertFalse(pot);
+        Assertions.assertEquals(0, jeanClaude.potCarregar(901, 751)); //Valors que no es poden portar. Espera un -1 però fem fallar el programa.
     }
 
 
-    @Test
-//Valor no és un número
-    void prova7() {
-        Exception exception = Assertions.assertThrows(NumberFormatException.class, () -> {
-            jeanClaude.carrega(Integer.parseInt("cinc"));
-        });
-    }
 }
 ```
 # Control temperatura:
