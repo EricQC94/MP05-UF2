@@ -109,15 +109,16 @@ public class pizzeriaPepe {
 | ----------- |
 | 4- No és un número | 
 
-Proves:
+<br>Proves:
 | Pizzes |
+| ----------- |
 | 1- 5 = true |
 | 2- 30 = false |
 | 3- -3 = false |
 | 4- nou = error |
 
 
-Valors límit:
+<br>Valors límit:
 | Pizzes |
 | ----------- |
 | 5- 0 = false |
