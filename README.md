@@ -125,8 +125,8 @@ public class pizzeriaPepe {
 | 6- 1 = true |
 | 7- 2 = true |
 | 8- 9 = true |
-| 10 = true |
-| 11 = false |
+| 9- 10 = true |
+| 10- 11 = false |
 
 
 ### Transports Jean Claude:
@@ -156,27 +156,32 @@ public class jeanClaude
 
 <br>Classes d'equivalència vàlides:
 | true |
+| ----------- |
 | 1- 500 <= carrega <=750 |
 
 <br>Classes d'equivalència no vàlides:
 | false |
+| ----------- |
 | 2- carrega > 750 |
 | 3- carrega < 500 |
 
 <b>Error:
 | Error |
+| ----------- |
 | 4. no és un número |
 
 Proves:
 | carrega |
+| ----------- |
 | 1- 610 = true |
 | 2- 900 = false |
 | 3- 0 = false |
 | 4- vint = error |
 
 
-Valor límit:
+<br>Valor límit:
 | carrega |
+| ----------- |
 | 5- 499 = false |
 | 6- 500 = true |
 | 7-  501 = true |
