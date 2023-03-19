@@ -364,20 +364,20 @@ Codi programa test:
 import org.junit.jupiter.api.*;
 
 
-class provesPizzeria {
+class pizzeriaPepeTest {
 
 
     @Test
         //Valor entre els límits
     void prova1() {
-        boolean pot = pizzeriaPepe.potCarregar(4);
+        boolean pot = pizzeriaPepe.potCarregar(3);
         Assertions.assertTrue(pot);
     }
 
     @Test
         //Valor superior al límit superior
     void prova2() {
-        boolean pot = pizzeriaPepe.potCarregar(13);
+        boolean pot = pizzeriaPepe.potCarregar(11);
         Assertions.assertFalse(pot);
     }
 
@@ -385,7 +385,7 @@ class provesPizzeria {
     @Test
         //Valor inferior al límit inferior
     void prova3() {
-        boolean pot = pizzeriaPepe.potCarregar(0);
+        boolean pot = pizzeriaPepe.potCarregar(-2);
         Assertions.assertFalse(pot);
     }
 
@@ -400,27 +400,41 @@ class provesPizzeria {
     @Test
         //Valors limits
     void prova5() {
-        boolean pot = pizzeriaPepe.potCarregar(1);
-        Assertions.assertTrue(pot);
+        boolean pot = pizzeriaPepe.potCarregar(0);
+        Assertions.assertFalse(pot);
     }
 
     @Test
         //Valors limit
     void prova6() {
-        boolean pot = pizzeriaPepe.potCarregar(10);
+        boolean pot = pizzeriaPepe.potCarregar(1);
         Assertions.assertTrue(pot);
     }
 
     @Test
         //Valor entre els límits
     void prova7() {
-        boolean pot = pizzeriaPepe.potCarregar(0);
-        Assertions.assertFalse(pot);
+        boolean pot = pizzeriaPepe.potCarregar(2);
+        Assertions.assertTrue(pot);
     }
 
     @Test
-        //Valor superior al límit superior
+        //Valor entre els límits
     void prova8() {
+        boolean pot = pizzeriaPepe.potCarregar(9);
+        Assertions.assertTrue(pot);
+    }
+
+    @Test
+        //Valor entre els límits
+    void prova9() {
+        boolean pot = pizzeriaPepe.potCarregar(10);
+        Assertions.assertTrue(pot);
+    }
+
+    @Test
+        //Valor entre els límits
+    void prova10() {
         boolean pot = pizzeriaPepe.potCarregar(11);
         Assertions.assertFalse(pot);
     }
@@ -459,55 +473,37 @@ public class jeanClaude {
 
 Codi programa test:
 ```
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class provesJean
+import static org.junit.Assert.assertEquals;
+
+class TransportsJeanClaudeTest
 {
-    //Classes d'equivalència vàlides
+
     @Test
     void prova1() {
-        Assertions.assertEquals(0, jeanClaude.potCarregar(550, 550)); //Correcte
+        assertEquals(-1, TransportsJeanClaude.potCarregar(400, 750)); // Correcte ja que no es pot portar
 
     }
-    //Classes d'equivalència no vàlides
     @Test
     void prova2() {
 
-        Assertions.assertEquals(0, jeanClaude.potCarregar(400, 900)); //No es pot portar la carrega, expected hauria de ser -1
+        assertEquals(-1, TransportsJeanClaude.potCarregar(500, 750)); //Error, la càrrega si que es pot portar, hauría de ser 0
 
     }
-
-    //Valors límit - classes vàlides
     @Test
     void prova3() {
 
-        Assertions.assertEquals(0, jeanClaude.potCarregar(500, 750));
+        assertEquals(0, TransportsJeanClaude.potCarregar(400, 750)); //Error, la carrega no es pot portar sería -1
     }
 
     @Test
     void prova4() {
 
-        Assertions.assertEquals(0, jeanClaude.potCarregar(900, 750));
+        assertEquals(0, TransportsJeanClaude.potCarregar(600, 750)); // Correcte, la càrrega es troba dins dels límits llavors si que es pot portar
     }
-
-
-    //Valors límit - classes no vàlides
-
-    @Test
-    void prova5() {
-
-        Assertions.assertEquals(-1, jeanClaude.potCarregar(499, 901)); //Els dos valors no es poden carregar, retorna -1: correcte.
-    }
-
-    @Test
-    void prova6() {
-        Assertions.assertEquals(0, jeanClaude.potCarregar(901, 751)); //Valors que no es poden portar. Espera un -1 però fem fallar el programa.
-    }
-
-
-}
 ```
+
 # Control temperatura:
 
 Codi del programa:
@@ -538,41 +534,44 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class provesTemp
+class ControlTemperaturaTest
 {
 
-    @org.junit.jupiter.api.Test
+    @Test
     void prova1() {
-        // Classes d'equivalència vàlides - temperatura del medidor més baixa que la del termostat en diferencia de 2 graus (s'espera 1)
-        assertEquals(1, ControlTemp.calcularTemp(-10, -8));
+        // Potencia és 2 temperatura > termostat, correcte
+        assertEquals(2, ControlTemperatura.calcularPotencia(20, 15));
     }
 
-
-    @org.junit.jupiter.api.Test
+    @Test
     void prova2() {
-        // Valor límit vàlids
-        assertEquals(2,ControlTemp.calcularTemp(-10, 50));
-        assertEquals(2,ControlTemp.calcularTemp(-9, 49));
+        // Potencia és 0 ja que tenim temperatura > termostat, dona error
+        assertEquals(1, ControlTemperatura.calcularPotencia(20, 15));
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void prova3() {
-        // Valor límit no vàlids
-        assertEquals(2,ControlTemp.calcularTemp(-11, 51));
-        assertEquals(1,ControlTemp.calcularTemp(0, 0));
+        // Correcte, potencia major o menor en 0 a 2 graus respecte al termostat
+        assertEquals(1,ControlTemperatura.calcularPotencia(23, 25));
+        assertEquals(1,ControlTemperatura.calcularPotencia(27, 25));
     }
 
-
-    // ALTRES PROVES
-    @org.junit.jupiter.api.Test
+    @Test
     void prova4() {
-        // Medidor > termostat
-        assertEquals(0,ControlTemp.calcularTemp(30, 25));
+        // Error, potencia m
+        assertEquals(1,ControlTemperatura.calcularPotencia(22, 25));
+        assertEquals(1,ControlTemperatura.calcularPotencia(28, 25));
     }
+
     @Test
     void prova5() {
-        // Fem fallar el programa
-        assertEquals(2,ControlTemp.calcularTemp(26, 25));
+        // Correcte
+        assertEquals(2,ControlTemperatura.calcularPotencia(22, 25));
+    }
+    @Test
+    void prova6() {
+        // Error
+        assertEquals(2,ControlTemperatura.calcularPotencia(26, 25));
 
     }
 
