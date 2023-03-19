@@ -88,28 +88,28 @@ public class pizzeriaPepe {
 
 }
 ```
-<br>Classes d'equivalència:
+Classes d'equivalència:
 | Paràmetre entrada | Regla a aplicar | Classes vàlides | Classes no vàlides |
 | ----------- | ----------- | ----------- | ----------- |
 | Pizzes | És un número sencer? + rang valors (1..10) | 1- pizzes <= 1 pizzes <= 10| 2- pizzes > 10 <br> 3- pizzes < 1 <br> 4- no és un número |
 
-<br>Classes d'equivalència vàlides:
+Classes d'equivalència vàlides:
 | true | 
 | ----------- |
 | 1- 1 <= pizzes <= 10 |
 
-<br>Classes d'equivalència no vàlides:
+Classes d'equivalència no vàlides:
 | false |
 | ----------- |
 | 2- pizzes > 10 | 
 | 3- pizzes < 1 |
 
-<br>Error:
+Error:
 | Error |
 | ----------- |
 | 4- No és un número | 
 
-<br>Proves:
+Proves:
 | Pizzes |
 | ----------- |
 | 1- 5 = true |
@@ -118,7 +118,7 @@ public class pizzeriaPepe {
 | 4- nou = error |
 
 
-<br>Valors límit:
+Valors límit:
 | Pizzes |
 | ----------- |
 | 5- 0 = false |
@@ -148,28 +148,28 @@ public class jeanClaude
 }
 ```
 
-<br>Classes d'equivalència:
+Classes d'equivalència:
 | Paràmetre entrada | Regla a aplicar | Classes vàlides | Classes no vàlides |
 | ----------- | ----------- | ----------- | ----------- |
 | Càrrega | 1- És un número? | 2- carrega => 500 | 3- carrega <= 900| 4- capacitat >= 500 | 5- capacitat <= 750 | 6- carrega <= capacitat |
 
-<br>Classes d'equivalència vàlides:
+Classes d'equivalència vàlides:
 | true |
 | ----------- |
 | 1- 500 <= carrega <=750 |
 
-<br>Classes d'equivalència no vàlides:
+Classes d'equivalència no vàlides:
 | false |
 | ----------- |
 | 2- carrega > 750 |
 | 3- carrega < 500 |
 
-<b>Error:
+Error:
 | Error |
 | ----------- |
 | 4. no és un número |
 
-<br>Proves:
+Proves:
 | carrega |
 | ----------- |
 | 1- 610 = true |
@@ -178,7 +178,7 @@ public class jeanClaude
 | 4- vint = error |
 
 
-<br>Valor límit:
+Valor límit:
 | carrega |
 | ----------- |
 | 5- 499 = false |
@@ -214,32 +214,32 @@ public class ControlTemp {
 
 
 
-<br>Classes d'equivalència:
+Classes d'equivalència:
 | Paràmetre entrada | Regla a aplicar | Classes vàlides | Classes no vàlides |
 | ----------- | ----------- | ----------- | ----------- |
 | temperatura | És un número sencer? | 1- temperatura =< 50 | 2- temperatura >= -10 | 
 | termostat | És un número sencer? | 1- termostat >= 15 | 2- termostat <= 40 |
 
 
-<br>Classes d'equivalència vàlides:
+Classes d'equivalència vàlides:
 | true |
 | ----------- | 
 | 1- -10=< temperatura <= 50 |
 | 2- 15 <= termostat <= 40 |
 
 
-<br>Classes d'equivalència no vàlides:
+Classes d'equivalència no vàlides:
 | false |
   | ----------- | 
 | 3- temperatura > 50 |
 | 4- termostat < 15 |
 
-<b>Error:
+Error:
 | Error |
   | ----------- | 
 | 5- no és un número |
 
-<br>Proves:
+Proves:
   | ----------- | 
 | temperatura i termostat |
 | 1- 10 / 30 = true |
@@ -248,7 +248,7 @@ public class ControlTemp {
 | 4- deu = error |
 
 
-<br>Valor límit:
+Valor límit:
 | temperatura i termostat |
   | ----------- | 
 | 5- -11 / 14 = false |
