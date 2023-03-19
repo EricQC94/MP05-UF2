@@ -146,9 +146,8 @@ public class jeanClaude
         return resultat;
     }
 }
-
-
 ```
+
 <br>Classes d'equivalència:
 | Paràmetre entrada | Regla a aplicar | Classes vàlides | Classes no vàlides |
 | ----------- | ----------- | ----------- | ----------- |
@@ -214,7 +213,7 @@ public class ControlTemp {
 ```
 
 
-```
+
 <br>Classes d'equivalència:
 | Paràmetre entrada | Regla a aplicar | Classes vàlides | Classes no vàlides |
 | ----------- | ----------- | ----------- | ----------- |
@@ -231,14 +230,16 @@ public class ControlTemp {
 
 <br>Classes d'equivalència no vàlides:
 | false |
+  | ----------- | 
 | 3- temperatura > 50 |
 | 4- termostat < 15 |
 
 <b>Error:
 | Error |
+  | ----------- | 
 | 5- no és un número |
 
-Proves:
+<br>Proves:
 | temperatura i termostat |
 | 1- 10 / 30 = true |
 | 2- -15 / 50 = false |
@@ -246,8 +247,9 @@ Proves:
 | 4- deu = error |
 
 
-Valor límit:
+<br>Valor límit:
 | temperatura i termostat |
+  | ----------- | 
 | 5- -11 / 14 = false |
 | 6- -10 / 15 = true |
 | 7- -9 / 16 = true |
