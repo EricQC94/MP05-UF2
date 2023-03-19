@@ -91,37 +91,42 @@ public class pizzeriaPepe {
 <br>Classes d'equivalència:
 | Paràmetre entrada | Regla a aplicar | Classes vàlides | Classes no vàlides |
 | ----------- | ----------- | ----------- | ----------- |
-| Pizzes | És un número? + rang valors (1..10) | 1. pizzes >= 1 pizzes <= 10| 2. pizzes > 10 <br> 3. pizzes < 1 <br> 5. no és un número |
+| Pizzes | És un número sencer? + rang valors (1..10) | 1- pizzes <= 1 pizzes <= 10| 2- pizzes > 10 <br> 3- pizzes < 1 <br> 4- no és un número |
 
 <br>Classes d'equivalència vàlides:
-| Pizzes | Classe vàlida coberta| Resultat |
-| ----------- | ----------- | ----------- |
-| 4 | 1 | TRUE |
+| true | 
+| ----------- |
+| 1- 1 <= pizzes <= 10 |
 
 <br>Classes d'equivalència no vàlides:
-| Pizzes | Classe no vàlida coberta| Resultat |
-| ----------- | ----------- | ----------- |
-| 13 | 2 | FALSE |
-| 0 | 3 | FALSE |
-| cinc | 4 | no és un número |
+| false |
+| ----------- |
+| 2- pizzes > 10 | 
+| 3- pizzes < 1 |
 
-Proves d'anàlisi dels valors límit:
+<br>Error:
+| Error |
+| ----------- |
+| 4- No és un número | 
 
-| Paràmetre entrada | Regla a aplicar | Classes vàlides | Classes no vàlides |
-| ----------- | ----------- | ----------- | ----------- |
-| Pizzes | És un número? + rang valors (1..10) | 5. pizzes=1 <br> 6. pizzes=10| 7. pizzes=0 <br> 8. pizzes=11 |
+Proves:
+| Pizzes |
+| 1- 5 = true |
+| 2- 30 = false |
+| 3- -3 = false |
+| 4- nou = error |
 
-Valors límit vàlids:
-| Pizzes | Classe vàlida coberta| Resultat |
-| ----------- | ----------- | ----------- |
-| 1 | 5 | TRUE |
-| 10 | 6 | TRUE |
 
-Valor límit no vàlids:
-| Pizzes | Classe no vàlida coberta| Resultat |
-| ----------- | ----------- | ----------- |
-| 0 | 7 | FALSE |
-| 11 | 8 | FALSE |
+Valors límit:
+| Pizzes |
+| ----------- |
+| 5- 0 = false |
+| 6- 1 = true |
+| 7- 2 = true |
+| 8- 9 = true |
+| 10 = true |
+| 11 = false |
+
 
 ### Transports Jean Claude:
 
@@ -146,42 +151,37 @@ public class jeanClaude
 <br>Classes d'equivalència:
 | Paràmetre entrada | Regla a aplicar | Classes vàlides | Classes no vàlides |
 | ----------- | ----------- | ----------- | ----------- |
-| Càrrega | És un número? + rang valors (500..900) | 1. carrega >= 500 carrega <= 900| 2. carrega < 500 carrega > 900  <br>3. no és un número |
-| Capacitat | És un número? + rang de valors (500..750) | 4. capacitat >= 500 capacitat <= 750| 5. capacitat < 500 capacitat > 750 <br> 6. no és un número|
+| Càrrega | 1- És un número? | 2- carrega => 500 | 3- carrega <= 900| 4- capacitat >= 500 | 5- capacitat <= 750 | 6- carrega <= capacitat |
 
 <br>Classes d'equivalència vàlides:
-| Càrrega | Classe vàlida coberta| Resultat |
-| ----------- | ----------- | ----------- |
-| 550 , 550 | 1 i 4 | 0 |
+| true |
+| 1- 500 <= carrega <=750 |
 
 <br>Classes d'equivalència no vàlides:
-| Càrrega | Classe no vàlida coberta| Resultat |
-| ----------- | ----------- | ----------- |
-| 400 , 900| 2 i 5| -1 |
-| cinquanta | 3 i 6| no és un número |
+| false |
+| 2- carrega > 750 |
+| 3- carrega < 500 |
 
-Proves d'anàlisi dels valors límit:
+<b>Error:
+| Error |
+| 4. no és un número |
 
-| Paràmetre entrada | Regla a aplicar | Classes vàlides | Classes no vàlides |
-| ----------- | ----------- | ----------- | ----------- |
-| Càrrega | És un número? + rang valors (500..900) | 7. carrega=500 <br> 8. carrega=900 | 9. carrega=499 <br> 10. carrega=901|
-| Capacitat | És un número? + rang de valors (500..750) | 11. capacitat= 500 12.capacitat = 750| 13. capacitat = 499 <br> 14. capacitat = 751 |
+Proves:
+| carrega |
+| 1- 610 = true |
+| 2- 900 = false |
+| 3- 0 = false |
+| 4- vint = error |
 
 
-Valor límit vàlids:
-| Carrega | Classe vàlida coberta| Resultat |
-| ----------- | ----------- | ----------- |
-| 500 | 7 | 0 |
-| 900 | 8 | 0 |
-| 500 i 750 | 11 i 12 | 0 |
-
-Valor límit no vàlids:
-| Carrega | Classe vàlida coberta| Resultat |
-| ----------- | ----------- | ----------- |
-| 499 | 9 i 13 | -1 |
-| 901 | 10 | -1 |
-| 751 | 14 | -1 |
-
+Valor límit:
+| carrega |
+| 5- 499 = false |
+| 6- 500 = true |
+| 7-  501 = true |
+| 8- 699 = true |
+| 9- 700 = true |
+| 10- 701 = false |
 
 
 ### Control de temperatura:
@@ -227,40 +227,41 @@ public class ControlTemp {
 ```
 
 
-
+```
 <br>Classes d'equivalència:
 | Paràmetre entrada | Regla a aplicar | Classes vàlides | Classes no vàlides |
 | ----------- | ----------- | ----------- | ----------- |
-| Temperatura | És un número? + rang valors (-10..50) | 1. -10 , x <= calcularTemp<= y , 50| <br>2. no és un número |
+| Càrrega | 1- És un número? | 2- carrega => 500 | 3- carrega <= 900| 4- capacitat >= 500 | 5- capacitat <= 750 | 6- carrega <= capacitat |
 
 <br>Classes d'equivalència vàlides:
-| Temperatura | Classe vàlida coberta| Resultat |
-| ----------- | ----------- | ----------- |
-| -10, -8 | 1 | 1 |
+| true |
+| 1- 500 <= carrega <=750 |
 
 <br>Classes d'equivalència no vàlides:
-| Temperatura | Classe no vàlida coberta| Resultat |
-| ----------- | ----------- | ----------- |
-| cinc | 2 | no és un número |
+| false |
+| 2- carrega > 750 |
+| 3- carrega < 500 |
 
-Proves d'anàlisi dels valors límit:
+<b>Error:
+| Error |
+| 4. no és un número |
 
-| Paràmetre entrada | Regla a aplicar | Classes vàlides | Classes no vàlides |
-| ----------- | ----------- | ----------- | ----------- |
-| Temperatura | És un número? + rang valors (-10, x..y , 50) | 4. controlTemp=-10, 50 <br> 5. controlTemp= -9, 49| 6. controlTemp=-11, 51 <br> 7. controlTemp=-0, 0|
+Proves:
+| carrega |
+| 1- 610 = true |
+| 2- 900 = false |
+| 3- 0 = false |
+| 4- vint = error |
 
-Valors límit vàlids:
-| Temperatura | Classe vàlida coberta| Resultat |
-| ----------- | ----------- | ----------- |
-| -10, 50 | 4 | 2 |
-| -9, 49  | 5 | 2 |
 
-Valors límit no vàlids:
-| Temperatura | Classe no vàlida coberta| Resultat |
-| ----------- | ----------- | ----------- |
-| -11, 51 | 6 | 2 |
-| 0, 0 | 7 | 1 | 
-
+Valor límit:
+| carrega |
+| 5- 499 = false |
+| 6- 500 = true |
+| 7-  501 = true |
+| 8- 699 = true |
+| 9- 700 = true |
+| 10- 701 = false |
 
 ## Activitats debug:
 
