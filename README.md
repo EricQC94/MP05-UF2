@@ -70,7 +70,7 @@ Els mètodes de caixa blanca validen l'estructura interna del codi software, men
 
 ## Activitats Caixa Negra:
 
-### Pizzeria Pepe:
+Pizzeria Pepe:
 
 Codi font:
 ```
@@ -129,7 +129,7 @@ public class pizzeriaPepe {
 | 10- 11 = false |
 
 
-### Transports Jean Claude:
+Transports Jean Claude:
 
 ```
 public class jeanClaude
@@ -189,7 +189,7 @@ Proves:
 | 10- 701 = false |
 
 
-### Control de temperatura:
+Control de temperatura:
 
 
 ```
@@ -240,6 +240,7 @@ public class ControlTemp {
 | 5- no és un número |
 
 <br>Proves:
+  | ----------- | 
 | temperatura i termostat |
 | 1- 10 / 30 = true |
 | 2- -15 / 50 = false |
