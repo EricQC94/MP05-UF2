@@ -169,7 +169,7 @@ public class jeanClaude
 | ----------- |
 | 4. no és un número |
 
-Proves:
+<br>Proves:
 | carrega |
 | ----------- |
 | 1- 610 = true |
