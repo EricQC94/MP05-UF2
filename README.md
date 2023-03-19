@@ -192,25 +192,6 @@ Proves:
 
 ### Control de temperatura:
 
-Un programa gestiona el modificador de temperatura del sistema de calefacció d'un restaurant.
-
-Aquest programa rep la medició de la temperatura del restaurant en graus celsius, acceptant com entrades vàlides de -10 a 50 graus. (medidor)
-
-A més té una entrada d'usuari/a amb la temperatura que es vol mantenir, que va de 15 a 40 graus. (termostat).
-
-El sistema té tres sortides possibles que representen la potencia del sistema de calefacció: 0, 1, 2.
-
-Segons la informació que té en cada moment el programa farà el següent:
-
-Si la temperatura del medidor és més alta que la del termostat, la potencia del sistema serà 0.
-Si la temperatura del medidor és més baixa o més alta que la del termostat però només entre 0 i 2 graus, la potència serà 1.
-Si la temperatura del medidor és més baixa que la del termostat en més de dos graus, la potència del sistema serà 2.
-
-Es demana:
-
-- Fer el codi font del programa.
-- Fer la taula amb les particions equivalents i casos vàlids i no vàlids.
-- Fer la taula amb l'anàlisis de valors límit i casos vàlids i no vàlids.
 
 ```
 public class ControlTemp {
@@ -237,37 +218,42 @@ public class ControlTemp {
 <br>Classes d'equivalència:
 | Paràmetre entrada | Regla a aplicar | Classes vàlides | Classes no vàlides |
 | ----------- | ----------- | ----------- | ----------- |
-| Càrrega | 1- És un número? | 2- carrega => 500 | 3- carrega <= 900| 4- capacitat >= 500 | 5- capacitat <= 750 | 6- carrega <= capacitat |
+| temperatura | És un número sencer? | 1- temperatura =< 50 | 2- temperatura >= -10 | 
+| termostat | És un número sencer? | 1- termostat >= 15 | 2- termostat <= 40 |
+
 
 <br>Classes d'equivalència vàlides:
 | true |
-| 1- 500 <= carrega <=750 |
+| ----------- | 
+| 1- -10=< temperatura <= 50 |
+| 2- 15 <= termostat <= 40 |
+
 
 <br>Classes d'equivalència no vàlides:
 | false |
-| 2- carrega > 750 |
-| 3- carrega < 500 |
+| 3- temperatura > 50 |
+| 4- termostat < 15 |
 
 <b>Error:
 | Error |
-| 4. no és un número |
+| 5- no és un número |
 
 Proves:
-| carrega |
-| 1- 610 = true |
-| 2- 900 = false |
-| 3- 0 = false |
-| 4- vint = error |
+| temperatura i termostat |
+| 1- 10 / 30 = true |
+| 2- -15 / 50 = false |
+| 3- -10 / 40 = false |
+| 4- deu = error |
 
 
 Valor límit:
-| carrega |
-| 5- 499 = false |
-| 6- 500 = true |
-| 7-  501 = true |
-| 8- 699 = true |
-| 9- 700 = true |
-| 10- 701 = false |
+| temperatura i termostat |
+| 5- -11 / 14 = false |
+| 6- -10 / 15 = true |
+| 7- -9 / 16 = true |
+| 8- 49 / 39 = true |
+| 9- 50 / 40 = true |
+| 10- 51 / 41 = false |
 
 ## Activitats debug:
 
